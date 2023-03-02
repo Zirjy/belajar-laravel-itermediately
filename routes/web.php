@@ -2,6 +2,7 @@
 
 use App\Data\Nasabah;
 use App\Data\Tabungan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,5 +21,9 @@ app()->singleton('nen', function(){
 
 
 Route::get('/', function () {
-    return dd(app('nen'), app('nen'));
+    return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
